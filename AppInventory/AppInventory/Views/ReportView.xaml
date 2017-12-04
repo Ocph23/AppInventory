@@ -1,0 +1,30 @@
+﻿<controls:MetroWindow x:Class="AppInventory.Views.ReportView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppInventory.Views"
+        xmlns:iconPack="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:rv1="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+                      mc:Ignorable="d"
+        Title="Laporan" Height="686.667" Width="721.667" WindowState="Maximized">
+    <controls:MetroWindow.Background>
+        <ImageBrush ImageSource="/AppInventory;component/hero-product-pages.jpg"/>
+    </controls:MetroWindow.Background>
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="80*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Button HorizontalContentAlignment="Left" FontSize="20" Margin="5" Name="pengadaan" Click="pengadaan_Click" Content="Pengadaan Barang" Foreground="#FF90E629"/>
+            <Button HorizontalContentAlignment="Left" FontSize="20" Margin="5" Name="mutasi" Click="mutasi_Click" Content="Mutasi" Foreground="#FF90E629"/>
+            <Button HorizontalContentAlignment="Left" FontSize="20" Margin="5" Name="barang" Click="barang_Click" Content="Dafar Barang" Foreground="#FF90E629"/>
+            <Button HorizontalContentAlignment="Left" FontSize="20" Margin="5" Name="lokasi" Click="lokasi_Click" Content="Daftar Lokasi" Foreground="#FF90E629"/>
+        </StackPanel>
+        <WindowsFormsHost Grid.Column="1" Margin="5">
+            <rv1:ReportViewer x:Name="reportViewer"></rv1:ReportViewer>
+        </WindowsFormsHost>
+    </Grid>
+</controls:MetroWindow>

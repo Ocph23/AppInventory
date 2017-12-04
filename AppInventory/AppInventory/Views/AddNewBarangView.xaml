@@ -1,0 +1,46 @@
+﻿<controls:MetroWindow x:Class="AppInventory.Views.AddNewBarangView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppInventory.Views"
+    xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls" WindowStartupLocation="CenterScreen"
+                      xmlns:iconPack="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="Tambah Barang" Height="450" Width="350.751">
+    <controls:MetroWindow.Background>
+        <ImageBrush ImageSource="/AppInventory;component/hero-product-pages.jpg" Stretch="None"/>
+    </controls:MetroWindow.Background>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition Width="79*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Label Height="30" Margin="3" Content="Nama"/>
+            <Label Height="30" Margin="3"  Content="Satuan"/>
+            <Label Height="30" Margin="3"  Content="Merek"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <TextBox Height="30" Margin="3" Text="{Binding Nama,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" ></TextBox>
+            <TextBox Height="30" Margin="3" Text="{Binding Satuan}"></TextBox>
+            <TextBox Height="30" Margin="3" Text="{Binding Merek}"></TextBox>
+        </StackPanel>
+
+        <Border Grid.Row="1" Grid.ColumnSpan="2" BorderBrush="#FF89E0E4" BorderThickness="0,3,0,0">
+            <StackPanel Margin="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Background="Transparent" Width="75" Margin="3,0" Command="{Binding SaveCommand}">
+                    <iconPack:PackIconModern Kind="Save" Foreground="Green"/>
+                </Button>
+                <Button Width="75" Margin="3,0" Command="{Binding CloseCommand}">
+                    <iconPack:PackIconMaterial Kind="ExitToApp" Foreground="Red"/>
+                </Button>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</controls:MetroWindow>

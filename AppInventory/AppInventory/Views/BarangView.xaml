@@ -1,0 +1,52 @@
+﻿<controls:MetroWindow x:Class="AppInventory.Views.BarangView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppInventory.Views"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+       xmlns:iconPack="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"  WindowStartupLocation="CenterScreen"
+        Title="BarangView" Height="700" Width="561.654">
+    <controls:MetroWindow.Background>
+        <ImageBrush ImageSource="/AppInventory;component/hero-product-pages.jpg" Stretch="UniformToFill"/>
+    </controls:MetroWindow.Background>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="85*"/>
+            <RowDefinition Height="15*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <WrapPanel HorizontalAlignment="Right">
+                <Label Content="Cari"/>
+                <TextBox MinWidth="100" Width="auto"/>
+            </WrapPanel>
+            <DataGrid ItemsSource="{Binding BarangView}"  SelectedItem="{Binding SelectedItem}" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False"
+                      CanUserDeleteRows="False" Margin="5"  Grid.Row="1" Background="{x:Null}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nama" Width="50*" Binding="{Binding Nama}"/>
+                    <DataGridTextColumn Header="Satuan" Width="50*" Binding="{Binding Satuan}"/>
+                    <DataGridTextColumn Header="Merek" Width="50*" Binding="{Binding Merek}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Border Grid.Row="1" BorderBrush="#FF89E0E4" BorderThickness="0,3,0,0">
+            <StackPanel Margin="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Background="{x:Null}" Width="75" Margin="3,0" Command="{Binding AddNewItemCommand}">
+                    <iconPack:PackIconOcticons Kind="DiffAdded" Foreground="Green"/>
+                </Button>
+                <Button Width="75" Margin="3,0" Command="{Binding EditItemCommand}">
+                    <iconPack:PackIconOcticons Kind="Pencil" Foreground="YellowGreen"/>
+                </Button>
+                <Button Width="75" Margin="3,0" Command="{Binding CloseCommand}">
+                    <iconPack:PackIconMaterial Kind="ExitToApp" Foreground="Red"/>
+                </Button>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</controls:MetroWindow>

@@ -1,0 +1,60 @@
+﻿<controls:MetroWindow x:Class="AppInventory.Views.AddNewPengadaanView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppInventory.Views"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls" WindowStartupLocation="CenterScreen"
+        xmlns:iconPack="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="Tambah Pengadaan Baru" Height="434.174" Width="413.366">
+
+    <controls:MetroWindow.Background>
+        <ImageBrush ImageSource="/AppInventory;component/hero-product-pages.jpg" Stretch="None"/>
+    </controls:MetroWindow.Background>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="164*"/>
+            <ColumnDefinition Width="221*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Label Height="30" Margin="3" Content="Kode"/>
+            <Label Height="30" Margin="3"  Content="Barang"/>
+            <Label Height="30" Margin="3"  Content="Lokasi"/>
+            <Label Height="30" Margin="3"  Content="Kondisi"/>
+            <Label Height="30" Margin="3"  Content="Masa Guna"/>
+            <Label Height="30" Margin="3"  Content="Harga"/>
+            <Label Height="30" Margin="3"  Content="Tanggal Pengadaan"/>
+
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <TextBox Height="30" Margin="3" Text="{Binding Kode,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" ></TextBox>
+            <ComboBox ItemsSource="{Binding BarangViewSource}" SelectedItem="{Binding Barang}" SelectedValue="{Binding BarangId,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" DisplayMemberPath="Nama" SelectedValuePath="BarangId" Height="30" Margin="3"></ComboBox>
+            <ComboBox ItemsSource="{Binding LocationSourceView}" SelectedItem="{Binding Lokasi}" SelectedValue="{Binding LokasiId,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" DisplayMemberPath="Nama" SelectedValuePath="LokasiId" Height="30" Margin="3"></ComboBox>
+            <ComboBox ItemsSource="{Binding KondisiSourceView}" SelectedValue="{Binding Kondisi,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" Height="30" Margin="3"></ComboBox>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Height="30" Margin="3" Width="50" Text="{Binding MasaGuna,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"></TextBox>
+                <Label Content="Bulan"/>
+            </StackPanel>
+
+            <TextBox Height="30" Margin="3" HorizontalContentAlignment="Right" Text="{Binding Harga,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"></TextBox>
+            <DatePicker SelectedDate="{Binding Tanggal,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" Height="30" Margin="3"></DatePicker>
+        </StackPanel>
+
+        <Border Grid.Row="1" Grid.ColumnSpan="2" BorderBrush="#FF89E0E4" BorderThickness="0,3,0,0">
+            <StackPanel Margin="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Background="Transparent" Width="75" Margin="3,0" Command="{Binding SaveCommand}">
+                    <iconPack:PackIconModern Kind="Save" Foreground="Green"/>
+                </Button>
+                <Button Width="75" Margin="3,0" Command="{Binding CloseCommand}">
+                    <iconPack:PackIconMaterial Kind="ExitToApp" Foreground="Red"/>
+                </Button>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</controls:MetroWindow>

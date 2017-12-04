@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppInventory", "AppInventory\AppInventory.csproj", "{D236855C-E322-4646-B6C5-9C018B6C3CD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{CDE404A2-4327-4EF7-A286-B9EE93549652}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D236855C-E322-4646-B6C5-9C018B6C3CD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D236855C-E322-4646-B6C5-9C018B6C3CD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D236855C-E322-4646-B6C5-9C018B6C3CD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D236855C-E322-4646-B6C5-9C018B6C3CD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDE404A2-4327-4EF7-A286-B9EE93549652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDE404A2-4327-4EF7-A286-B9EE93549652}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDE404A2-4327-4EF7-A286-B9EE93549652}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDE404A2-4327-4EF7-A286-B9EE93549652}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B65964B-65A9-4748-B920-6F3E69C513A2}
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+EndGlobal

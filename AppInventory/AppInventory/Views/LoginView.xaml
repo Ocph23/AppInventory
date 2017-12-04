@@ -1,0 +1,34 @@
+﻿<controls:MetroWindow x:Class="AppInventory.Views.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppInventory.Views"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+       xmlns:iconPack="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"  WindowStartupLocation="CenterScreen"
+        Title="Login" Height="563.5" Width="419.154">
+    <controls:MetroWindow.Background>
+        <ImageBrush ImageSource="/AppInventory;component/hero-product-pages.jpg" Stretch="UniformToFill"/>
+    </controls:MetroWindow.Background>
+    <Grid Margin="10">
+        <StackPanel Margin="20">
+            <iconPack:PackIconFontAwesome HorizontalAlignment="Center" Kind="UserCircle" Foreground="Bisque" Height="100" Width="150"/>
+            <Label Margin="0,30,0,0" FontSize="16" Content="User Name"/>
+            <TextBox Height="45" Text="{Binding UserName}"/>
+            <Label Margin="0,20,0,0" FontSize="16" Content="Password"/>
+            <PasswordBox x:Name="password"  PasswordChanged="password_PasswordChanged" Height="45" Background="{x:Null}" Foreground="White"/>
+            <TextBlock Margin="0,10,0,0" FontSize="16" TextWrapping="Wrap" Text="{Binding Message}" Foreground="#FFFB1717"/>
+            <Border Grid.Row="1" Margin="0,20,0,0" BorderBrush="#FF89E0E4" BorderThickness="0,1,0,0" Height="80">
+                <StackPanel Margin="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button Background="{x:Null}" Content="Login" Width="75" Margin="3,0" Command="{Binding LoginCommand}">
+                    </Button>
+                    <Button Width="75" Margin="3,0" Content="Keluar" Command="{Binding CloseCommand}">
+                    </Button>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+
+    </Grid>
+</controls:MetroWindow>

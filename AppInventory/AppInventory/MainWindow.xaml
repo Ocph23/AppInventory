@@ -1,0 +1,134 @@
+﻿<controls:MetroWindow x:Class="AppInventory.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppInventory"
+        xmlns:iconPack="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Title="Applikasi Inventaris Barang" Height="686.667" Width="721.667" WindowState="Maximized">
+    <controls:MetroWindow.Background>
+        <ImageBrush ImageSource="hero-product-pages.jpg"/>
+    </controls:MetroWindow.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="85*"/>
+            <RowDefinition Height="15*"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button HorizontalAlignment="Left" Margin="10" Background="{x:Null}" BorderBrush="{x:Null}" Command="{Binding AddNewItemPengadaanCommand}">
+                <iconPack:PackIconOcticons Kind="DiffAdded" Foreground="Green" Width="32" Height="32"/>
+            </Button>
+            <WrapPanel Margin="10" HorizontalAlignment="Right">
+                <Label Content="Cari Berdasarkan Kode/Nama" />
+                <TextBox Width="auto" MinWidth="75"></TextBox>
+            </WrapPanel>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="191*"/>
+                    <ColumnDefinition Width="166*"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid Grid.Column="0" ItemsSource="{Binding PengadaanView}" SelectedItem="{Binding SelectedItem}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="10,10,2,10"  >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Kode" Width="10*" Binding="{Binding Kode}"/>
+                        <DataGridTextColumn Header="Barang"  Width="10*" Binding="{Binding Barang.Nama}"/>
+                        <DataGridTextColumn Width="10*"  Header="Barang" Binding="{Binding Barang.Satuan}"/>
+                        <DataGridTextColumn  Width="10*" Header="Barang" Binding="{Binding Barang.Merek}"/>
+                        <DataGridTextColumn  Width="10*" Header="Lokasi/Ruang" Binding="{Binding Lokasi.Nama}"/>
+                        <DataGridTextColumn  Width="10*" Header="Kondisi" Binding="{Binding Kondisi}"/>
+                    </DataGrid.Columns>
+                    <DataGrid.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Penyusutan.SisaNilaiBarang}" Value="0">
+                                    <Setter Property="Background" Value="Red"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.CellStyle>
+                </DataGrid>
+                <StackPanel Grid.Column="1">
+                    <Expander Margin="0,10,10,10" IsExpanded="True" Height="auto" Header="Detail">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="60*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <Label Content="Harga Beli"/>
+                                <Label Content="Masa Guna"/>
+                                <Label Content="Tanggal Pengadaan"/>
+                                <Label Content="Biaya Penyusutan"/>
+                                <Label Content="Penyusutan Hingga Sekarang"/>
+                                <Label Content="Sisa Nilai Barang"/>
+                                <Label Content="Tanggal Akhir Penggunaan"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="{Binding SelectedItem.Harga, StringFormat='{}Rp. {0:#,#}'}"/>
+                                <TextBlock Text="{Binding SelectedItem.MasaGuna, StringFormat='{}{0} Bulan'}"/>
+                                <TextBlock Text="{Binding SelectedItem.Tanggal}"/>
+                                <TextBlock Text="{Binding SelectedItem.Penyusutan.BiayaPenyusutanPerBulan, StringFormat='{}Rp. {0:#,#.00}/Bulan'}"/>
+                                <TextBlock Text="{Binding SelectedItem.Penyusutan.TotalPenyusutan, StringFormat='{}Rp. {0:#,#}'}"/>
+                                <TextBlock Text="{Binding SelectedItem.Penyusutan.SisaNilaiBarang, StringFormat='{}Rp. {0:#,#}'}"/>
+                                <TextBlock Text="{Binding SelectedItem.Penyusutan.TanggalBerakhir}"/>
+                            </StackPanel>
+                        </Grid>
+
+                    </Expander>
+                    <Expander Margin="0,10,10,10" IsExpanded="True" Height="auto" Header="Riwayat Mutasi">
+                        <Grid>
+                            <DataGrid ItemsSource="{Binding SelectedItem.ListMutasi}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Width="*" Header="Tanggal Mutasi" Binding="{Binding Tanggal}"/>
+                                    <DataGridTextColumn Width="*" Header="Lokasi Awal" Binding="{Binding Asal.Nama}"/>
+                                    <DataGridTextColumn Width="*" Header="Lokasi Tujuan" Binding="{Binding Tujuan.Nama}"/>
+                                    <DataGridTextColumn Width="*" Header="Administrator" Binding="{Binding User.Nama}"/>
+                                </DataGrid.Columns>
+                                
+                            </DataGrid>
+                        </Grid>
+
+                    </Expander>
+                </StackPanel>
+               
+            </Grid>
+
+        </Grid>
+
+
+
+        <Border Padding="10" BorderThickness="0,5,0,0" Grid.Row="1" BorderBrush="#FFC4EEEE" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Margin="5,0" Content="Barang" Command="{Binding BarangCommand}" ToolTip="Barang"  VerticalContentAlignment="Center" >
+                </Button>
+
+                <Button Content="Lokasi/Ruang" Grid.Column="1" Margin="5,0" Command="{Binding LocationCommand}" ToolTip="Lokasi/Ruang/Posisi Barang"  VerticalContentAlignment="Center" />
+                <Button Content="Mutasi"  Grid.Column="2" Command="{Binding MutasiCommand}" Margin="5,0" ToolTip="Pengadaan"  VerticalContentAlignment="Center" />
+
+                <Button Content="Laporan" Grid.Column="3" Command="{Binding ReportCommand}"  Margin="5,0" ToolTip="Laporan"  VerticalContentAlignment="Center"/>
+                <Button  Grid.Column="5" Command="{Binding ExitCommand}"  Margin="5,0" ToolTip="Pengadaan"  VerticalContentAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" >
+                    <iconPack:PackIconMaterial VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Red" Kind="ExitToApp"></iconPack:PackIconMaterial>
+                </Button>
+
+            </Grid>
+
+
+        </Border>
+
+
+    </Grid>
+</controls:MetroWindow>
