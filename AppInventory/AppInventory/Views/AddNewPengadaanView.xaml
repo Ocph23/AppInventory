@@ -33,9 +33,9 @@
         </StackPanel>
         <StackPanel Grid.Column="1">
             <TextBox Height="30" Margin="3" Text="{Binding Kode,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" ></TextBox>
-            <ComboBox ItemsSource="{Binding BarangViewSource}" SelectedItem="{Binding Barang}" SelectedValue="{Binding BarangId,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" DisplayMemberPath="Nama" SelectedValuePath="BarangId" Height="30" Margin="3"></ComboBox>
-            <ComboBox ItemsSource="{Binding LocationSourceView}" SelectedItem="{Binding Lokasi}" SelectedValue="{Binding LokasiId,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" DisplayMemberPath="Nama" SelectedValuePath="LokasiId" Height="30" Margin="3"></ComboBox>
-            <ComboBox ItemsSource="{Binding KondisiSourceView}" SelectedValue="{Binding Kondisi,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" Height="30" Margin="3"></ComboBox>
+            <ComboBox ItemsSource="{Binding BarangViewSource}" SelectedItem="{Binding Barang}" SelectedValue="{Binding BarangId,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" DisplayMemberPath="Nama" SelectedValuePath="BarangId" Height="30" Margin="3" Foreground="#FF2E353B" Background="{x:Null}"></ComboBox>
+            <ComboBox ItemsSource="{Binding LocationSourceView}" SelectedItem="{Binding Lokasi}" SelectedValue="{Binding LokasiId,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" DisplayMemberPath="Nama" SelectedValuePath="LokasiId" Height="30" Margin="3" Foreground="#FF2E353B" Background="{x:Null}"></ComboBox>
+            <ComboBox ItemsSource="{Binding KondisiSourceView}" SelectedValue="{Binding Kondisi,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" Height="30" Margin="3" Foreground="#FF2E353B" Background="{x:Null}"></ComboBox>
             <StackPanel Orientation="Horizontal">
                 <TextBox Height="30" Margin="3" Width="50" Text="{Binding MasaGuna,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"></TextBox>
                 <Label Content="Bulan"/>

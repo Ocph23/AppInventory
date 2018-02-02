@@ -22,7 +22,7 @@ namespace AppInventory.ViewModels
         private void Load()
         {
             SaveCommand = new CommandHandler { CanExecuteAction = x => string.IsNullOrEmpty(Error), ExecuteAction = SaveCommandAction };
-
+            CloseCommand = new CommandHandler { CanExecuteAction = x => true, ExecuteAction =x=> WindowClose() };
 
             using (var db = new OcphDbContext())
             {
@@ -42,6 +42,7 @@ namespace AppInventory.ViewModels
 
             }
         }
+
 
         private void SaveCommandAction(object obj)
         {
@@ -97,6 +98,7 @@ namespace AppInventory.ViewModels
         public ObservableCollection<lokasi> LocationSource { get; private set; }
         public CollectionView LocationSourceView { get; private set; }
         public CommandHandler SaveCommand { get; private set; }
+        public CommandHandler CloseCommand { get; private set; }
 
         public string Error => this.error;
 

@@ -71,6 +71,14 @@ namespace AppInventory.ViewModels
             form.ShowDialog();
             if (viewmodel.IsSaved)
             {
+              var a=  App.Current.MainWindow.DataContext as ViewModels.PengadaanViewModel;
+                var source = a.PengadaanSource.Where(O => O.LokasiId == SelectedItem.LokasiId).FirstOrDefault();
+                if (source != null)
+                {
+                    source.Lokasi.Nama = SelectedItem.Nama;
+                    a.PengadaanView.Refresh();
+                }
+                 
                 SelectedItem.Nama = viewmodel.Nama;
                 SelectedItem.Keterangan = viewmodel.Keterangan;
             }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 
 namespace AppInventory.ViewModels
@@ -19,8 +20,12 @@ namespace AppInventory.ViewModels
             this.Dari = selectedItem.LokasiId;
             this.Tanggal = DateTime.Now;
             this.PengadaanId = selectedItem.PengadaanId;
+            this.Kondisi = selectedItem.Kondisi;
             this.UserId = 1;
-
+            KondisiSourceView = new ObservableCollection<KondisiBarang>(Enum.GetValues(typeof(KondisiBarang))
+                              .Cast<KondisiBarang>()
+                              .Select(v => v)
+                              .ToList());
             using (var db = new OcphDbContext())
             {
                 NewLocations = new ObservableCollection<lokasi>(db.Lokasi.Select());
@@ -41,7 +46,6 @@ namespace AppInventory.ViewModels
         #region Method
         private void SaveAction(object obj)
         {
-
             using (var db = new OcphDbContext())
             {
                 var trans = db.Connection.BeginTransaction();
@@ -95,6 +99,7 @@ namespace AppInventory.ViewModels
 
         public ObservableCollection<lokasi> NewLocations { get; }
         public bool IsSaved { get; private set; }
+        public ObservableCollection<KondisiBarang> KondisiSourceView { get; }
 
         public string this[string columnName] {
             get

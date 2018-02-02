@@ -16,7 +16,6 @@
             <RowDefinition Height="85*"/>
             <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
-
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="70"/>
@@ -27,19 +26,19 @@
             </Button>
             <WrapPanel Margin="10" HorizontalAlignment="Right">
                 <Label Content="Cari Berdasarkan Kode/Nama" />
-                <TextBox Width="auto" MinWidth="75"></TextBox>
+                <TextBox Text="{Binding SearchItem}" KeyDown="TextBox_KeyDown" Width="auto" MinWidth="100"></TextBox>
             </WrapPanel>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="191*"/>
                     <ColumnDefinition Width="166*"/>
                 </Grid.ColumnDefinitions>
-                <DataGrid Grid.Column="0" ItemsSource="{Binding PengadaanView}" SelectedItem="{Binding SelectedItem}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="10,10,2,10"  >
+                <DataGrid Grid.Column="0" x:Name="grid" ItemsSource="{Binding PengadaanView}" SelectedItem="{Binding SelectedItem}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Margin="10,10,2,10"  >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Kode" Width="10*" Binding="{Binding Kode}"/>
                         <DataGridTextColumn Header="Barang"  Width="10*" Binding="{Binding Barang.Nama}"/>
-                        <DataGridTextColumn Width="10*"  Header="Barang" Binding="{Binding Barang.Satuan}"/>
-                        <DataGridTextColumn  Width="10*" Header="Barang" Binding="{Binding Barang.Merek}"/>
+                        <DataGridTextColumn Width="10*"  Header="Satuan" Binding="{Binding Barang.Satuan}"/>
+                        <DataGridTextColumn  Width="10*" Header="Merk" Binding="{Binding Barang.Merek}"/>
                         <DataGridTextColumn  Width="10*" Header="Lokasi/Ruang" Binding="{Binding Lokasi.Nama}"/>
                         <DataGridTextColumn  Width="10*" Header="Kondisi" Binding="{Binding Kondisi}"/>
                     </DataGrid.Columns>
@@ -47,7 +46,7 @@
                         <Style TargetType="DataGridCell">
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding Penyusutan.SisaNilaiBarang}" Value="0">
-                                    <Setter Property="Background" Value="Red"/>
+                                    <Setter Property="Background" Value="#FFFBCF08"/>
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -88,7 +87,6 @@
                                     <DataGridTextColumn Width="*" Header="Tanggal Mutasi" Binding="{Binding Tanggal}"/>
                                     <DataGridTextColumn Width="*" Header="Lokasi Awal" Binding="{Binding Asal.Nama}"/>
                                     <DataGridTextColumn Width="*" Header="Lokasi Tujuan" Binding="{Binding Tujuan.Nama}"/>
-                                    <DataGridTextColumn Width="*" Header="Administrator" Binding="{Binding User.Nama}"/>
                                 </DataGrid.Columns>
                                 
                             </DataGrid>
@@ -120,7 +118,7 @@
                 <Button Content="Mutasi"  Grid.Column="2" Command="{Binding MutasiCommand}" Margin="5,0" ToolTip="Pengadaan"  VerticalContentAlignment="Center" />
 
                 <Button Content="Laporan" Grid.Column="3" Command="{Binding ReportCommand}"  Margin="5,0" ToolTip="Laporan"  VerticalContentAlignment="Center"/>
-                <Button  Grid.Column="5" Command="{Binding ExitCommand}"  Margin="5,0" ToolTip="Pengadaan"  VerticalContentAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" >
+                <Button  Grid.Column="5" Click="Button_Click" Margin="5,0" ToolTip="Pengadaan"  VerticalContentAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" >
                     <iconPack:PackIconMaterial VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Red" Kind="ExitToApp"></iconPack:PackIconMaterial>
                 </Button>
 

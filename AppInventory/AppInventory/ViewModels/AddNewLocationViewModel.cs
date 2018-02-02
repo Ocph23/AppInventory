@@ -21,6 +21,7 @@ namespace AppInventory.ViewModels
             this.selectedItem = selectedItem;
             this.Nama = selectedItem.Nama;
             this.Keterangan = selectedItem.Keterangan;
+            this.LokasiId = selectedItem.LokasiId;
             this.Load();
         }
 

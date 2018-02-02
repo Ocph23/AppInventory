@@ -14,6 +14,7 @@ namespace AppInventory.ViewModels
     {
         private MainWindow mainWindow;
         private pengadaan _selected;
+        private string _search;
         #region Constructor
 
         public PengadaanViewModel(MainWindow mainWindow)
@@ -52,6 +53,7 @@ namespace AppInventory.ViewModels
                 }
                 PengadaanSource = new ObservableCollection<Models.pengadaan>(data);
                 PengadaanView = (CollectionView)CollectionViewSource.GetDefaultView(PengadaanSource);
+                PengadaanView.Filter = new Predicate<object>(Contains);
                 PengadaanView.Refresh();
                 BarangSource = new ObservableCollection<barang>(db.Barang.Select());
                 BarangSourceView = (CollectionView)CollectionViewSource.GetDefaultView(BarangSource);
@@ -64,6 +66,51 @@ namespace AppInventory.ViewModels
             this.mainWindow = mainWindow;
         }
 
+        private bool Contains(object obj)
+        {
+            var data = obj as pengadaan;
+            if (data != null && !string.IsNullOrEmpty(SearchItem))
+                return data.Kode.Contains(SearchItem) || data.Barang.Nama.Contains(SearchItem);
+            else
+                return true;
+        }
+
+
+        public void RefreshView()
+        {
+            PengadaanSource.Clear();
+            using (var db = new OcphDbContext())
+            {
+                var data = (from a in db.Pengadaan.Select()
+                            join b in db.Barang.Select() on a.BarangId equals b.BarangId
+                            join c in db.Lokasi.Select() on a.LokasiId equals c.LokasiId
+                            select new pengadaan
+                            {
+                                BarangId = a.BarangId,
+                                Harga = a.Harga,
+                                Kode = a.Kode,
+                                Kondisi = a.Kondisi,
+                                Lokasi = c,
+                                LokasiId = a.LokasiId,
+                                MasaGuna = a.MasaGuna,
+                                PengadaanId = a.PengadaanId,
+                                StatusAktif = a.StatusAktif,
+                                Tanggal = a.Tanggal,
+                                Barang = b
+                            }).ToList();
+
+                foreach (var item in data)
+                {
+                    item.Penyusutan = new BiayaPenyusutan(item.Tanggal, item.MasaGuna, item.Harga);
+                    PengadaanSource.Add(item);
+                }
+            }
+            PengadaanView.Refresh();
+          
+
+
+        }
+     
         private void ReportCommandActiom(object obj)
         {
             var form = new Views.ReportView(PengadaanSource.ToList());
@@ -80,6 +127,7 @@ namespace AppInventory.ViewModels
             mainWindow.Hide();
             form.ShowDialog();
             mainWindow.Show();
+            RefreshView();
         }
 
         private void ListMutasiCommandAction(object obj)
@@ -95,6 +143,7 @@ namespace AppInventory.ViewModels
             mainWindow.Hide();
             form.ShowDialog();
             mainWindow.Show();
+            RefreshView();
 
         }
 
@@ -107,7 +156,7 @@ namespace AppInventory.ViewModels
             set
             {
                 _selected = value;
-                if(_selected.ListMutasi==null)
+                if(_selected!=null &&_selected.ListMutasi==null)
                 {
                     _selected.ListMutasi = Helpers.GetMotasiHistory(value);
                    
@@ -134,6 +183,16 @@ namespace AppInventory.ViewModels
         public CollectionView BarangSourceView { get; }
         public Action WindowClose { get; internal set; }
         public Func<string, string, MessageDialogStyle, MetroDialogSettings, Task<MessageDialogResult>> MessageShow { get; internal set; }
+        public string SearchItem {
+            get { return _search; }
+            set
+            {
+                _search = value;
+                PengadaanView.Refresh();
+                OnPropertyChange("SearchItem");
+            }
+
+        }
         #endregion
 
 

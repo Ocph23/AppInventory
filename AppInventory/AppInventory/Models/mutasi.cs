@@ -59,11 +59,19 @@ using DAL;
                       _userid=value; 
                      OnPropertyChange("UserId");
                      }
-          } 
+          }
 
-         
+        private KondisiBarang kondisi;
 
-          [DbColumn("Tanggal")] 
+        public KondisiBarang Kondisi
+        {
+            get { return kondisi; }
+            set { kondisi = value;
+                OnPropertyChange("Kondisi");
+            }
+        }
+
+        [DbColumn("Tanggal")] 
           public DateTime Tanggal 
           { 
                get{return _tanggal;} 

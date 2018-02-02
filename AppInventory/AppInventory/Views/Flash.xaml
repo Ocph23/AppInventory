@@ -1,0 +1,33 @@
+﻿<controls:MetroWindow x:Class="AppInventory.Views.Flash"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:AppInventory.Views"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="Flash" Height="677.636" Width="517.571">
+    <controls:MetroWindow.Background>
+        <ImageBrush ImageSource="/AppInventory;component/hero-product-pages.jpg" Stretch="UniformToFill"/>
+    </controls:MetroWindow.Background>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="579*"/>
+            <RowDefinition Height="68*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Margin="25,50,25,30">
+            <TextBlock FontSize="25" Text="APLIKASI INFENTARIS BARANG" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#FFCDA314"/>
+            <TextBlock FontSize="25" Text="PADA KANTOR BAPENDA" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#FFCDA314"/>
+            <TextBlock FontSize="25" Text="KOTA JAYAPURA" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#FFCDA314"/>
+            <Image Width="100" Height="150" Source="/AppInventory;component/logobapenda.png"/>
+
+            <TextBlock FontSize="25" Text="OLEH:" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#FFCDA314"/>
+            <TextBlock FontSize="25" Text="KADIR NGABALIN" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#FFCDA314"/>
+            <TextBlock FontSize="25" Text="NPM 201411009" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#FFCDA314"/>
+
+
+
+        </StackPanel>
+        <Button Grid.Row="1" Name="btn" Visibility="Hidden" HorizontalAlignment="Right" Width="100" Content="Close" Margin="15"/>
+    </Grid>
+</controls:MetroWindow>

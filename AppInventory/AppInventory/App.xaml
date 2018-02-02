@@ -13,13 +13,14 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro.IconPacks;component/Themes/IconPacks.xaml" />
             </ResourceDictionary.MergedDictionaries>
-           
 
             <Style TargetType="{x:Type Button}">
                 <Setter Property="Background" Value="{x:Null}"/>
                 <Setter Property="FontSize" Value="18"/>
                 <Setter Property="Foreground" Value="White"/>
             </Style>
+            
+          
 
             <Style TargetType="{x:Type Label}">
                 <Setter Property="FontSize" Value="15"/>
@@ -29,9 +30,10 @@
 
             <Style TargetType="{x:Type TextBlock}">
                 <Setter Property="FontSize" Value="15"/>
-                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Foreground" Value="#FF007ACC"/>
                 <Setter Property="Height" Value="40"/>
             </Style>
+            
             <Style TargetType="{x:Type TextBox}">
                 <Setter Property="FontSize" Value="15"/>
                 <Setter Property="Foreground" Value="White"/>
@@ -47,6 +49,7 @@
                 <Setter Property="Background" Value="{x:Null}"/>
                 <Setter Property="RowBackground" Value="{x:Null}"/>
             </Style>
+
             <Style TargetType="{x:Type DataGridColumnHeader}">
                 <Setter Property="Background" >
                     <Setter.Value>

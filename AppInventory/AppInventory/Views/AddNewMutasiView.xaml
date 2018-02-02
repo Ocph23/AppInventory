@@ -7,7 +7,7 @@
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
        xmlns:iconPack="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Data Lokasi/Ruang" Height="399.082" Width="395.642">
+        Title="Data Lokasi/Ruang" Height="511.082" Width="436.642">
     <controls:MetroWindow.Background>
         <ImageBrush ImageSource="/AppInventory;component/hero-product-pages.jpg" Stretch="None"/>
     </controls:MetroWindow.Background>
@@ -27,6 +27,7 @@
             <Label Height="30" Margin="3" Content="Merek"/>
             <Label Height="30" Margin="3"  Content="Pindah Dari"/>
             <Label Height="30" Margin="3"  Content="Pindah Ke"/>
+            <Label Height="30" Margin="3"  Content="Kondisi"/>
             <Label Height="30" Margin="3"  Content="Tanggal Mutasi"/>
         </StackPanel>
         <StackPanel Grid.Column="1">
@@ -36,7 +37,8 @@
             <TextBox IsReadOnly="True"  Height="30" Margin="3" Text="{Binding PengadaanSelected.Barang.Merek,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" ></TextBox>
 
             <TextBox IsReadOnly="True" Height="30" Margin="3" Text="{Binding PengadaanSelected.Lokasi.Nama,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" ></TextBox>
-            <ComboBox IsEditable="True" Height="30" Margin="3" ItemsSource="{Binding NewLocations}" SelectedItem="{Binding SelectedNewLocation}" SelectedValue="{Binding Ke,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" DisplayMemberPath="Nama" SelectedValuePath="LokasiId" ></ComboBox>
+            <ComboBox IsEditable="True" Height="30" Margin="3" ItemsSource="{Binding NewLocations}" SelectedItem="{Binding SelectedNewLocation}" SelectedValue="{Binding Ke,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" DisplayMemberPath="Nama" SelectedValuePath="LokasiId" Background="{x:Null}" Foreground="White" ></ComboBox>
+            <ComboBox ItemsSource="{Binding KondisiSourceView}" SelectedValue="{Binding Kondisi,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" Height="30" Margin="3" Foreground="White" Background="{x:Null}"></ComboBox>
             <controls:DateTimePicker SelectedDate="{Binding Tanggal}" Margin="3" Height="30"></controls:DateTimePicker>
         </StackPanel>
 
@@ -45,7 +47,7 @@
                 <Button Background="Transparent" Width="75" Margin="3,0" Command="{Binding SaveCommand}">
                     <iconPack:PackIconModern Kind="Save" Foreground="Green"/>
                 </Button>
-                <Button Width="75" Margin="3,0" Command="{Binding CloseCommand}">
+                <Button Width="75" Margin="3,0" Command="{Binding CloseCommand}" Foreground="#FF007ACC">
                     <iconPack:PackIconMaterial Kind="ExitToApp" Foreground="Red"/>
                 </Button>
             </StackPanel>

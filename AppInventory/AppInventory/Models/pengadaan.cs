@@ -49,15 +49,7 @@ namespace AppInventory.Models
             }
         } 
 
-          [DbColumn("Persetujuan")] 
-          public string Persetujuan 
-          { 
-               get{return _persetujuan;} 
-               set{ 
-                      _persetujuan=value; 
-                     OnPropertyChange("Persetujuan");
-                     }
-          } 
+          
 
           [DbColumn("MasaGuna")] 
           public int MasaGuna 
@@ -150,7 +142,6 @@ namespace AppInventory.Models
         private int  _pengadaanid;
            private string  _kode;
            private DateTime  _tanggal;
-           private string  _persetujuan;
            private int  _masaguna;
            private double  _harga;
            private StatusAktif  _statusaktif;

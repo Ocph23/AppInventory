@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AppInventory.ViewModels;
+using System.Windows.Interactivity;
 
 namespace AppInventory
 {
@@ -26,7 +27,8 @@ namespace AppInventory
 
         public MainWindow()
         {
-          
+            var flash = new Views.Flash();
+            flash.ShowDialog();
             var form = new Views.LoginView();
             var loginViewmodel = new LoginViwModel() {WindowClose=form.Close};
             form.DataContext = loginViewmodel;
@@ -42,5 +44,17 @@ namespace AppInventory
 
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                grid.Focus();
+        }
     }
+  
 }
